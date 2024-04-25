@@ -17,35 +17,6 @@ uint64_t getTime() {
     return ms;
 }
 
-void lineatangle(int x, int y, int length, int angle)
-{
-    double rad = (double)angle*M_PI/180.0;
-    line(x, y, x+length*cos(rad), y-length*sin(rad));
-}
-
-void rectangleRotate(int cx, int cy, int w, int h, int angle=0)
-{
-    double theta = (double)(angle%180)*M_PI/180;
-    int dx = w/2;
-    int dy = h/2;
-    int point[8] = {
-        (int)(-dx*cos(theta) - dy*sin(theta) + cx),
-        (int)(-dx*sin(theta) + dy*cos(theta) + cy),
-        (int)(dx*cos(theta) - dy*sin(theta) + cx),
-        (int)(dx*sin(theta) + dy*cos(theta) + cy),
-        (int)(dx*cos(theta) + dy*sin(theta) + cx),
-        (int)(dx*sin(theta) - dy*cos(theta) + cy),
-        (int)(-dx*cos(theta) + dy*sin(theta) + cx),
-        (int)(-dx*sin(theta) - dy*cos(theta) + cy)
-    };
-
-    for(int i = 0; i < 8; i += 2) {
-        line(point[i], point[i+1], point[(i+2)%8], point[(i+3)%8]);
-    }
-
-}
-
-
 class Ball {
     public:
         double x = 0;
